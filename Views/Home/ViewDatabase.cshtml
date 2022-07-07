@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Database View";
+}
+<h1>@ViewData["Title"]</h1>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Email Address</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Country</th>
+            <th>Password</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var person in Model)
+        {
+            <tr>
+                <td>@person.Email</td>
+                <td>@person.First</td>
+                <td>@person.Last</td>
+                <td>@person.Country.Name</td>
+                <td>@person.Password</td>
+                <td>
+                    <a asp-controller="Person" asp-action="Edit"
+                       asp-route-id="@person.Email">Edit</a>
+                    <a asp-controller="Person" asp-action="Delete"
+                       asp-route-id="@person.Email">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
